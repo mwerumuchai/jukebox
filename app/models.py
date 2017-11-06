@@ -23,7 +23,7 @@ class Group(UserMixin,db.Model):
     id = db.Column(db.Integer, primary_key = True)
 
     # name column for the group name
-    name = db.Column(db.String, unique=True)
+    name = db.Column(db.String)
 
     # password_hash column for passwords
     password_hash = db.Column(db.String(255))
