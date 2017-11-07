@@ -1,35 +1,50 @@
 {% extends 'base.html' %}
 
 
+<!-- Styles block -->
+
+{% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% endblock %}
 <!-- Content block -->
 {% block content %}
 
-
 <div class="row">
-  <div class="col-md-4">
-    <ul id="">
-      <li<a href="/">NICKBOX</a>
-        </li>
-        <li><a href="/">SEARCH</a></li>
-        <li><a href="/">HOME</a></li>
-        <li><a href="/"><button class="btn">CREATE GROUP</button></a></li>
-        <li><a href="/"><i class="glyphicon glyphicon-headphones"></i>PLAYLIST</a></li>
-        <li>
-          <span class="social">
-        <a class="icon icon-facebook facebookIcon" target="_blank" href="https://www.facebook.com/github"></a>
-        <a target="_blank" href="https://twitter.com/github" class="icon icon-twitter"></a>
-        <a target="_blank" href="https://instagram.com/github/" class="icon icon-instagram"></a>
-        <a target="_blank" href="https://plus.google.com/103476120225460848054/posts" class="icon icon-googleplus"></a>
-        <a target="_blank" href="http://www.pinterest.com/github/" class="icon icon-pinterest"></a>
-        <a target="_blank" href="http://flickr.com/github" class="icon icon-flickr"></a>
-        <a target="_blank" href="https://www.linkedin.com/company/github" class="icon icon-linkedin"></a>
-      </span>
-        </li>
+  <div class="col-md-2" id="position1">
+    <ul>
+      <h1 id="heading"><a href="/">NICKBOX</a></h1>
+      <form>
+        <input type="text" name="movie_query" placeholder="Search for a Song" class="form-control" id="search">
+        <button type="submit" id="btn1"><i class="glyphicon glyphicon-search"></i></button>
+      </form>
+
+      <h2><a href="/">Home</a> {% if current_user.is_authenticated %} {{current_user.name}}</ul>
+
+  <a href="{{url_for('auth.logout')}}">Log out</a>
+
+    {% else %}
+
+  <ul><a href="{{url_for('auth.login')}}"><button type="button" name="button">Login</button></a></ul>
+    {%endif%}
+
+    <ul><h2><a href="{{url_for('auth.register')}}"><button type="button" name="button">Create Group</button></a></ul></h2>
+      <a href="/"><i class="glyphicon glyphicon-headphones"></i>Playlist</a>
+
+      <span class="social">
+          <a class="icon icon-facebook facebookIcon" target="_blank" href="https://www.facebook.com/github"></a>
+          <a target="_blank" href="https://twitter.com/github" class="icon icon-twitter"></a>
+          <a target="_blank" href="https://instagram.com/github/" class="icon icon-instagram"></a>
+          <a target="_blank" href="https://plus.google.com/103476120225460848054/posts" class="icon icon-googleplus"></a>
+          <a target="_blank" href="http://www.pinterest.com/github/" class="icon icon-pinterest"></a>
+          <a target="_blank" href="http://flickr.com/github" class="icon icon-flickr"></a>
+          <a target="_blank" href="https://www.linkedin.com/company/github" class="icon icon-linkedin"></a>
+        </span>
+
     </ul>
-    <div class="col-md-8">
-      <h2>HOMEPAGE</h2>
-    </div>
+  </div>
+  <div class="col-md-10" id="position2">
+    <h2>HOMEPAGE</h2>
 
   </div>
+</div>
 
-  {% endblock %}
+{% endblock %}
