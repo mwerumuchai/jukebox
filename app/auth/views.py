@@ -18,7 +18,7 @@ def login():
 
             login_user(group, login_form.remember.data)
 
-            return redirect(request.args.get('next') or url_for('main.index'))
+            return redirect(request.args.get('next') or url_for('main.group', id=group.id))
 
         flash('Invalid group name or password')
 

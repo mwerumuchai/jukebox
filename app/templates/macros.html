@@ -3,13 +3,58 @@
 <div class="row">
   <div class="well col-xs-6 col-sm-6 col-md-6 col-lg-6 playlist-card">
 
-    <ul class="text-center">
+    {% for playlist in playlist_list %}
+    <div class="row">
+
+      <div class="col-md-4 col-lg-4">
+
+      </div>
+
+      </ul>
+
+    </div>
+
+    <a href="/playlist/{{playlist.id}}">
+                            {{ playlist.name }}
+                            <small>
+                                by {{ playlist.group.name }}
+                            </small>
+                        </a>
+
+    </h3>
+
+    </li>
+
+  </div>
+
+</div>
+
+{% endfor %} {% endmacro %}
+
+<!-- Display Playlist -->
+{% macro displayPlaylistGroup(playlist_list) %} {% for playlist in playlist_list %}
+<div class="row">
+
+  <div class="col-md-4 col-lg-4">
+
+  </div>
+
+  <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+    <li class="text-center">
 
       <h3 class="playlist-name">
-        <a href="/playlist/{{playlist.id}}">{{ playlist.name }}</a>
-      </h3>
 
-    </ul>
+                        <a href="/group/playlist/{{playlist.id}}">
+                            {{ playlist.name }}
+                            <small>
+                                by {{ playlist.group.name }}
+                            </small>
+                        </a>
+
+                    </h3>
+
+    </li>
 
   </div>
 
