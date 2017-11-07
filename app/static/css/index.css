@@ -26,14 +26,7 @@ body {
   color: #fff;
 }
 
-#btn1 {
-  background-color: transparent;
-  border-color: transparent;
-  position: absolute;
-  top: 17px;
-  right: 285px;
-}
-
-#search {
-  width: 85%;
+.search {
+  width: 15%;
+  float: right;
 }
