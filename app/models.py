@@ -34,6 +34,9 @@ class Group(UserMixin,db.Model):
     # image_path column for the group's profile image
     image_path = db.Column(db.String)
 
+    # relationship between group and playlist class
+    playlists = db.relationship('Playlist', backref = 'group',lazy = 'dynamic')
+
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -48,7 +51,6 @@ class Group(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
-
 
 class Playlist(db.Model):
     '''
@@ -67,6 +69,9 @@ class Playlist(db.Model):
     # image_path column for the playlist's image
     image_path = db.Column(db.String)
 
+    #group_id column for linking a playlist with a group
+    group_id = db.Column(db.Integer,db.ForeignKey('groups.id')) 
+
     def save_playlist(self):
         '''
         Function to save a playlist to the database
@@ -81,5 +86,7 @@ class Playlist(db.Model):
         '''
         playlists = Playlist.query.all()
         return playlists
+
+
 
 
