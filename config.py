@@ -4,7 +4,8 @@ class Config:
     '''
     General configuration parent class
     '''
-    pass
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProdConfig(Config):
     '''
@@ -13,24 +14,26 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 class TestConfig(Config):
     '''
     Testing configuration child class
 
     Args:
-        Config: The parent configuration class with General configuration settings 
+        Config: The parent configuration class with General configuration settings
     '''
-    pass
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://muchai:muchai90@localhost/nick_box_test'
+
 
 class DevConfig(Config):
     '''
     Development configuration child class
-    
+
     Args:
         Config: The parent configuration class with General configuration settings
     '''
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://muchai:muchai90@localhost/nick_box'
 
     DEBUG = True
 

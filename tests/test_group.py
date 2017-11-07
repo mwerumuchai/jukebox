@@ -40,3 +40,5 @@ class GroupTest(unittest.TestCase):
         Test case that confirms that our group password_hash can be verified when we pass in the correct the password
         '''
         self.assertTrue(self.new_group.verify_password('banana'))
+
+
