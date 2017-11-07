@@ -32,7 +32,7 @@ class Group(UserMixin,db.Model):
     description = db.Column(db.String)
 
     # image_path column for the group's profile image
-    image_path = db.Column(db.String())
+    image_path = db.Column(db.String)
 
     @property
     def password(self):
@@ -48,4 +48,38 @@ class Group(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
+
+
+class Playlist(db.Model):
+    '''
+    Playlist class to define a group in the database
+    '''
+
+    # Name of the table
+    __tablename__ ='playlists'
+
+    # id column that is the primary key
+    id = db.Column(db.Integer,primary_key=True)
+
+    # name column for the playlist name
+    name = db.Column(db.String)
+
+    # image_path column for the playlist's image
+    image_path = db.Column(db.String)
+
+    def save_playlist(self):
+        '''
+        Function to save a playlist to the database
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_playlists(cls):
+        '''
+        Function to retrieve playlists from database 
+        '''
+        playlists = Playlist.query.all()
+        return playlists
+
 

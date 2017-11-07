@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% import 'macros.html' as macro %}
 
 <!-- Styles block -->
 
@@ -43,6 +43,10 @@
   </div>
   <div class="col-md-10" id="position2">
     <h2>HOMEPAGE</h2>
+
+    <ul>
+      {{ macro.displayPlaylist(playlists)}}
+    </ul>
 
   </div>
 </div>

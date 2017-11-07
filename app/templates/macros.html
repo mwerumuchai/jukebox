@@ -1,0 +1,32 @@
+<!-- Display Playlist -->
+{% macro displayPlaylist(playlist_list) %}
+
+
+    {% for playlist in playlist_list %}
+        <div class="row">
+            
+            <div class="col-md-4 col-lg-4">
+                
+            </div>
+
+            <div class=" col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            
+                <li class="text-center">
+
+                    <h3 class="playlist-name">
+
+                        <a href="/playlist/{{playlist.id}}">
+                            {{ playlist.name }}   
+                        </a>
+                        
+                    </h3>
+
+                </li>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{% endmacro %}
