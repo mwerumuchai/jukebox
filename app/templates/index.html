@@ -1,14 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'bootstrap/base.html' %}
+
 
 <!-- Content block -->
 {% block content %}
 
-    <title> {{ title }} </title>
 
-    <div class="container">
-
-        <h1>Home Page</h1>
-
+<div class="row">
+  <div class="col-md-4">
+    <ul id="">
+      <li<a href="/">NICKBOX</a>
+        </li>
+        <li><a href="/">SEARCH</a></li>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/"><button class="btn">CREATE GROUP</button></a></li>
+        <li><a href="/"><i class="glyphicon glyphicon-headphones"></i>PLAYLIST</a></li>
+        <li>
+          <span class="social">
+        <a class="icon icon-facebook facebookIcon" target="_blank" href="https://www.facebook.com/github"></a>
+        <a target="_blank" href="https://twitter.com/github" class="icon icon-twitter"></a>
+        <a target="_blank" href="https://instagram.com/github/" class="icon icon-instagram"></a>
+        <a target="_blank" href="https://plus.google.com/103476120225460848054/posts" class="icon icon-googleplus"></a>
+        <a target="_blank" href="http://www.pinterest.com/github/" class="icon icon-pinterest"></a>
+        <a target="_blank" href="http://flickr.com/github" class="icon icon-flickr"></a>
+        <a target="_blank" href="https://www.linkedin.com/company/github" class="icon icon-linkedin"></a>
+      </span>
+        </li>
+    </ul>
+    <div class="col-md-8">
+      <h2>HOMEPAGE</h2>
     </div>
 
-{% endblock %}
+  </div>
+
+  {% endblock %}
