@@ -6,7 +6,7 @@
 
   <div class="navbar navbar-inverse" role="navigation">
 
-    <div class="container">
+    <div class="container-fluid">
 
       <div class="navbar-header">
 
@@ -27,17 +27,31 @@
 
         <ul class="nav navbar-nav">
 
-          <li>
-            <a href="/">Home</a>
-          </li>
+          <ul class="nav navbar-nav navbar-right">
 
-        </ul>
+            {% if current_user.is_authenticated %}
+
+            <li>
+              <h4 style="color:white; margin-top:0.85em;"> {{current_user.name}} </h4> </li>
+
+            <li> <a href="{{url_for('auth.logout')}}">Sign out</a> </li>
+
+            {% else %}
+
+            <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+            {%endif%}
+
+          </ul>
 
       </div>
+
+      </ul>
 
     </div>
 
   </div>
+
+</div>
 
 </div>
 {% endblock %}
