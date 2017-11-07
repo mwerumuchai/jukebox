@@ -1,18 +1,21 @@
-{% extends 'base.html' %} {% import 'macros.html' as macro %}
+{% extends 'base.html' %} 
+{% import 'macros.html' as macro %}
 
 <!-- Styles block -->
 
-{% block styles%} {{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% endblock %}
+{% block styles%} 
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> 
+{% endblock %}
 <!-- Content block -->
 {% block content %}
+    
+    <title> {{title}} </title>
 
-<h2>HOMEPAGE</h2>
+    <h2>HOMEPAGE</h2>
 
-<ul>
-  {{ macro.displayPlaylist(playlists)}}
-</ul>
-
-
+    <ul>
+      {{ macro.displayPlaylist(playlists)}}
+    </ul>
 
 {% endblock %}

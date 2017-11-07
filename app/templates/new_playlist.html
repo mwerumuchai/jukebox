@@ -1,0 +1,10 @@
+{% extends 'base.html'%} 
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+
+    <title> {{title}} </title>
+
+    {{ wtf.quick_form(new_playlist_form) }}
+
+{% endblock %}
