@@ -32,7 +32,7 @@ class Group(UserMixin,db.Model):
     description = db.Column(db.String)
 
     # image_path column for the group's profile image
-    image_path = db.Column(db.String())
+    image_path = db.Column(db.String)
 
     @property
     def password(self):
@@ -63,6 +63,9 @@ class Playlist(db.Model):
 
     # name column for the playlist name
     name = db.Column(db.String)
+
+    # image_path column for the playlist's image
+    image_path = db.Column(db.String)
 
     def save_playlist(self):
         '''
