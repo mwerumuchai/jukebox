@@ -11,13 +11,18 @@
 <div class="row">
   <div class="col-md-2" id="position1">
     <ul>
-      <h1 id="heading"><a href="/">NICKBOX</a></h1>
+      <h1><a  id="heading" href="/">NICKBOX</a></h1>
       <ul>
-        <h2><a href="/"><button type="button" class="btn btn-info">Home</button></a> </ul>{% if current_user.is_authenticated %} {{current_user.name}}</ul>
-        <a href="{{url_for('auth.logout')}}">Log out</a>{% else %}
-        <ul><a href="{{url_for('auth.login')}}"><button type="button" class="btn btn-info">Login</button></a></ul>{%endif%}
-        <ul><h2><a href="{{url_for('auth.register')}}"><button type="button" class="btn btn-info">Create Group</button></a></ul></h2>
-        <a href="/"><i class="glyphicon glyphicon-headphones"></i>Playlist</a>
+        <h2><a href="/"><button type="button" class="btn" id="home">HOME</button></a>
+        </ul>{% if current_user.is_authenticated %}
+        <a href="{{url_for('main.group', id=current_user.id)}}">
+          {{current_user.name}}
+
+        </a></ul>
+        <a href="{{url_for('auth.logout')}}">LOG OUT</a>{% else %}
+        <ul><a href="{{url_for('auth.login')}}"><button type="button" class="btn base">LOGIN</button></a></ul>{%endif%}
+        <ul><h2><a href="{{url_for('auth.register')}}"><button type="button" class="btn base">CREATE GROUP</button></a></ul></h2>
+        <h3><a href="/"><i class="glyphicon glyphicon-headphones"></i>Playlist</a></h3>
 
         <span class="social">
           <a class="icon icon-facebook facebookIcon" target="_blank" href="https://www.facebook.com/github"></a>
