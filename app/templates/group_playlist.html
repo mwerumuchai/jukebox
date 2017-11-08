@@ -1,18 +1,10 @@
-{% extends 'base.html' %} 
-{% import 'macros.html' as macro %}
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
 
 <!-- Content block -->
 {% block content %}
 
-    <title> {{title}} </title>
+<title> {{title}} </title>
 
-    <h2> 
-        {{playlist.name}}
-        by {{ playlist.group.name}} 
-    </h2>
+<h2>{{playlist.name}} by {{ playlist.group.name}}</h2>
 
-    <h2>
-        Add Songs
-    </h2>
-
-{% endblock %}
+<h2>Add Songs</h2> {% endblock %}

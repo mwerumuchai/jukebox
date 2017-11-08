@@ -1,20 +1,18 @@
-{% extends 'base.html' %} 
-{% import 'macros.html' as macro %}
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
 
 <!-- Content block -->
 {% block content %}
 
-    <title> {{title}} </title>
+<title> {{title}} </title>
 
-    <h2> {{group.name}} </h2>
+<h2> {{group.name}} </h2>
 
-    <h3>
-        <a href="/group/playlist/new/{{group.id}}"> Create Playlist </a>
+<h3>
+        <a href='/group/playlist/new/{{group.id}}'> Create Playlist </a>
     </h3>
 
-    <ul>
-      {{ macro.displayPlaylistGroup(playlists)}}
-    </ul>
+<ul>
+  {{ macro.displayPlaylistGroup(playlists)}}
+</ul>
 
 {% endblock %}
-
