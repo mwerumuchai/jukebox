@@ -16,6 +16,18 @@ def index():
 
     return render_template('index.html', title = title, playlists = playlists)
 
+@main.route('/playlist/<int:id>')
+def playlist(id):
+    '''
+    View to display a specific playlist and its its songs
+    '''
+
+    playlist = Playlist.query.get(id)
+    songs = Song.get_songs(id)
+    title = f'{playlist.name} page'
+
+    return render_template('playlist.html', title=title, playlist=playlist, songs=songs)
+
 @main.route('/group/<int:id>')
 @login_required
 def group(id):

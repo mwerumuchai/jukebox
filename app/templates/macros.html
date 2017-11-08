@@ -3,7 +3,7 @@
 
   {% for playlist in playlist_list %}
 
-    <div class=“row”>
+    <div class="row">
 
       <div class="col-md-4 col-lg-4 ">
 
@@ -11,9 +11,9 @@
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-        <li class=“text-center”>
+        <li class="text-center">
 
-          <h3 class=“playlist-name”>
+          <h3 class="playlist-name">
 
           <a href='/playlist/{{playlist.id}}'>
 
@@ -36,21 +36,51 @@
 
 {% endmacro %}
 
-<!-- Display Playlists in a Group page -->
-{% macro displayPlaylistGroup(playlist_list) %} 
+<!-- Display Songs in a Playlist -->
+{% macro displaySong(song_list) %} 
 
-  {% for playlist in playlist_list %}
+  {% for song in song_list %}
 
-    <div class=“row”>
+    <div class="row">
 
       <div class="col-md-4 col-lg-4">
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-        <li class=“text-center”>
+        <li class="text-center">
 
-          <h3 class=“playlist-name”>
+          <h3 class="song-name">
+
+             {{song.name}}
+
+          </h3>
+
+        </li>
+
+      </div>
+
+    </div>
+
+  {% endfor %} 
+  
+{% endmacro %}
+
+<!-- Display Playlists in a Group page -->
+{% macro displayPlaylistGroup(playlist_list) %} 
+
+  {% for playlist in playlist_list %}
+
+    <div class="row">
+
+      <div class="col-md-4 col-lg-4">
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+        <li class="text-center">
+
+          <h3 class="playlist-name">
 
              <a href='/group/playlist/{{playlist.id}}'>
                   {{ playlist.name }}
@@ -77,18 +107,18 @@
 
   {% for song in song_list %}
 
-    <div class=“row”>
+    <div class="row">
 
       <div class="col-md-4 col-lg-4">
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-        <li class=“text-center”>
+        <li class="text-center">
 
-          <h3 class=“song-name”>
+          <h3 class="song-name">
 
-             {{song.song_path}}
+             {{song.name}}
 
           </h3>
 
