@@ -14,7 +14,7 @@ class PlaylistTest(unittest.TestCase):
         '''
         Set up method that will run before every Test
         '''
-        self.new_playlist = Playlist(name='banana')
+        self.new_playlist = Playlist(name='The Banana List')
 
     def test_instance(self):
         '''
@@ -38,9 +38,26 @@ class PlaylistTest(unittest.TestCase):
 
         self.new_playlist.save_playlist()
 
-        test_playlist = Playlist(name="Product Pitches")
+        test_playlist = Playlist(name="The Production List")
 
         test_playlist.save_playlist()
+
+        gotten_playlists = Playlist.get_playlists()
+
+        self.assertTrue( len(gotten_playlists) == len(Playlist.query.all()) )
+
+    def test_delete_playlist(self):
+        '''
+        Test case to check if test_playlist is deleted from the database
+        '''
+
+        self.new_playlist.save_playlist()
+
+        test_playlist = Playlist(name="The Bose List")
+
+        test_playlist.save_playlist()
+
+        test_playlist.delete_playlist(test_playlist.id)
 
         gotten_playlists = Playlist.get_playlists()
 

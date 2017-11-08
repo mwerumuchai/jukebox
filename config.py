@@ -7,6 +7,8 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    UPLOADED_AUDIOS_DEST = 'app/static/audios'
+
 class ProdConfig(Config):
     '''
     Pruduction configuration child class

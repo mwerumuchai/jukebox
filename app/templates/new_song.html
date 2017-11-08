@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+<!-- Content block -->
+{% block content %}
+    
+    <form action="{{url_for('main.new_song', id = playlist.id)}} " method= "post" enctype = "multipart/form-data">
+        <input type="file" name="audio" class="form-control" required>
+        <input type="submit">
+    </form>
+
+{% endblock %}
