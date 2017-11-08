@@ -120,5 +120,44 @@ def new_song(id):
 
     return render_template('new_song.html', playlist=playlist)
 
+@main.route('/group/playlist/song/delete/<int:id>')
+@login_required
+def delete_song(id):
+    '''
+    View function that deletes a song and redirect to the index view function
+    '''
+    song = Song.query.get(id)
+
+    if song is None:
+        abort(404)
+
+    if song.playlist.group.id != current_user.id:
+        abort(403)
+
+
+    song.delete_song(id)
+
+    return redirect(url_for('.index'))
+
+@main.route('/group/playlist/delete/<int:id>')
+@login_required
+def delete_playlist(id):
+    '''
+    View function that deletes a playlist and its songs and redirect to index view function
+    '''
+    playlist = Playlist.query.get(id)
+
+    if playlist is None:
+        abort(404)
+
+    if playlist.group.id != current_user.id:
+        abort(403)
+
+    playlist.delete_playlist(id)
+
+    return redirect(url_for('.index'))
+
+
+
    
 

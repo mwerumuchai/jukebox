@@ -8,9 +8,29 @@
 
     <h2>{{playlist.name}} by {{ playlist.group.name}}</h2>
 
-    <h2>
-        <a href='/group/playlist/song/new/{{playlist.id}}'>Add Song</a>
-    </h2>
+    <div class="row">
+
+        <div class="col-md-4 col-lg-4">
+
+            <h2>
+                <a href='/group/playlist/song/new/{{playlist.id}}'>Add Song</a>
+            </h2>
+            
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+            
+        </div>
+
+        <div class="col-md-4 col-lg-4">
+            
+            <h2>
+                <a href='/group/playlist/delete/{{playlist.id}}'>Delete Playlist</a>
+            </h2>
+            
+        </div>
+
+    </div>
 
     <h4> {{ macro.displaySongGroup(songs)}} </h4> 
 {% endblock %}
