@@ -54,7 +54,7 @@ class Group(UserMixin,db.Model):
 
 class Playlist(db.Model):
     '''
-    Playlist class to define a group in the database
+    Playlist class to define a playlist in the database
     '''
 
     # Name of the table
@@ -72,6 +72,10 @@ class Playlist(db.Model):
     #group_id column for linking a playlist with a group
     group_id = db.Column(db.Integer,db.ForeignKey('groups.id')) 
 
+    # relationship between playlist and song class
+    songs = db.relationship('Song', backref = 'playlist',lazy = 'dynamic')
+
+
     def save_playlist(self):
         '''
         Function to save a playlist to the database
@@ -83,9 +87,63 @@ class Playlist(db.Model):
     def get_playlists(cls):
         '''
         Function to retrieve playlists from database 
+
+        Returns:
+            playlists : list of playlists in the database
         '''
         playlists = Playlist.query.all()
         return playlists
+
+class Song(db.Model):
+    '''
+    Song class to define a song in the database
+    '''
+
+    # Name of the table
+    __tablename__ ='songs'
+
+    # id column that is the primary key
+    id = db.Column(db.Integer,primary_key=True)
+
+    # name column for the name of the song
+    name = db.Column(db.String)
+
+    # song_path column for the path of the song
+    song_path = db.Column(db.String)
+
+    # playlist_id column for linking a song with a playlist
+    playlist_id = db.Column(db.Integer,db.ForeignKey('playlists.id')) 
+
+    def save_song(self):
+        '''
+        Function to save a song to the database
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_songs(cls,playlist_id):
+        '''
+        Function to retrieve songs from a specific playlist database
+
+        Args:
+            playlist_id : specific playlist id
+
+        Returns:
+            songs : list of songs belonging to the specific playlist
+        '''
+        songs = Song.query.filter_by(playlist_id= playlist_id).all()
+        return songs
+    @classmethod
+    def delete_song(cls,song_id):
+        '''
+        Function to delete a song from the playlist 
+
+        Args:
+            song_id : specific id for a song 
+        '''
+        song = Song.query.filter_by(id=song_id).delete()
+        db.session.commit()
 
 
 
