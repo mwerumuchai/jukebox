@@ -14,7 +14,7 @@ class SongTest(unittest.TestCase):
         '''
         Set up method that will run before every Test
         '''
-        self.new_song = Song(name='banana')
+        self.new_song = Song(name='Happy Song Happy Song')
 
     def test_instance(self):
         '''
@@ -38,13 +38,30 @@ class SongTest(unittest.TestCase):
 
         self.new_song.save_song()
 
-        test_song = Song(name="Product Pitches")
+        test_song = Song(name="Wierd Song Awkward Song")
 
         test_song.save_song()
 
         gotten_songs = Song.get_songs(3456789098765431234567890098765432123456787654323456787654323456787654323456787654334)
 
         self.assertTrue( len(gotten_songs) != len(Song.query.all()) )
+
+    def test_delete_song(self):
+        '''
+        Test case to check if test_song is deleted from the database
+        '''
+
+        self.new_song.save_song()
+
+        test_song = Song(name="Stand Up Jump Up")
+
+        test_song.save_song()
+
+        test_song.delete_song(test_song.id)
+
+        gotten_songs = Song.get_songs(4990826417581240726341234)
+
+        self.assertFalse( len(gotten_songs) == len(Song.query.all()) )
 
 
 

@@ -73,7 +73,7 @@ class Playlist(db.Model):
     group_id = db.Column(db.Integer,db.ForeignKey('groups.id')) 
 
     # relationship between playlist and song class
-    songs = db.relationship('Song', backref = 'playlist',lazy = 'dynamic')
+    songs = db.relationship('Song', backref = 'playlist',lazy = 'dynamic',  cascade="all, delete-orphan")
 
 
     def save_playlist(self):
@@ -94,6 +94,19 @@ class Playlist(db.Model):
         playlists = Playlist.query.all()
         return playlists
 
+    @classmethod
+    def delete_playlist(cls,playlist_id):
+        '''
+        Function that deletes a specific playlist from the playlists table and database and also delete its songs
+
+        Args:
+            playlist_id : specific playlist id
+        '''
+        songs = Song.query.filter_by(playlist_id=playlist_id).delete()
+        playlist = Playlist.query.filter_by(id=playlist_id).delete()
+        db.session.commit()
+
+
 class Song(db.Model):
     '''
     Song class to define a song in the database
@@ -112,7 +125,7 @@ class Song(db.Model):
     song_path = db.Column(db.String)
 
     # playlist_id column for linking a song with a playlist
-    playlist_id = db.Column(db.Integer,db.ForeignKey('playlists.id')) 
+    playlist_id = db.Column(db.Integer,db.ForeignKey('playlists.id', ondelete='CASCADE')) 
 
     def save_song(self):
         '''
@@ -134,6 +147,7 @@ class Song(db.Model):
         '''
         songs = Song.query.filter_by(playlist_id= playlist_id).all()
         return songs
+    
     @classmethod
     def delete_song(cls,song_id):
         '''
