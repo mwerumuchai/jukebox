@@ -1,60 +1,103 @@
 <!-- Display Playlist -->
-{% macro displayPlaylist(playlist_list) %} {% for playlist in playlist_list %}
-<div class=“row”>
+{% macro displayPlaylist(playlist_list) %}
 
-  <div class="col-md-4 col-lg-4 ">
+  {% for playlist in playlist_list %}
 
-  </div>
+    <div class=“row”>
 
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+      <div class="col-md-4 col-lg-4 ">
 
-    <li class=“text-center”>
+      </div>
 
-      <h3 class=“playlist-name”>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-      <a href='/playlist/{{playlist.id}}'>
-      {{ playlist.name }}
-      <small>
-          by {{ playlist.group.name }}
-      </small>
-      </a>
+        <li class=“text-center”>
 
-      </h3>
+          <h3 class=“playlist-name”>
 
-    </li>
+          <a href='/playlist/{{playlist.id}}'>
 
-  </div>
+            {{ playlist.name }}
+            <small>
+                by {{ playlist.group.name }}
+            </small>
 
-</div>
-
-{% endfor %} {% endmacro %}
-
-<!-- Display Playlist -->
-{% macro displayPlaylistGroup(playlist_list) %} {% for playlist in playlist_list %}
-<div class=“row”>
-
-  <div class="col-md-4 col-lg-4">
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-    <li class=“text-center”>
-
-      <h3 class=“playlist-name”>
-
-         <a href='/group/playlist/{{playlist.id}}'>
-              {{ playlist.name }}
-              <small>
-                  by {{ playlist.group.name }}
-              </small>
           </a>
 
-      </h3>
+          </h3>
 
-    </li>
+        </li>
 
-  </div>
+      </div>
 
-</div>
+    </div>
 
-{% endfor %} {% endmacro %}
+  {% endfor %} 
+
+{% endmacro %}
+
+<!-- Display Playlists in a Group page -->
+{% macro displayPlaylistGroup(playlist_list) %} 
+
+  {% for playlist in playlist_list %}
+
+    <div class=“row”>
+
+      <div class="col-md-4 col-lg-4">
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+        <li class=“text-center”>
+
+          <h3 class=“playlist-name”>
+
+             <a href='/group/playlist/{{playlist.id}}'>
+                  {{ playlist.name }}
+                  <small>
+                      by {{ playlist.group.name }}
+                  </small>
+              </a>
+
+          </h3>
+
+        </li>
+
+      </div>
+
+    </div>
+
+  {% endfor %} 
+  
+{% endmacro %}
+
+
+<!-- Display Songs in a Group's Playlist -->
+{% macro displaySongGroup(song_list) %} 
+
+  {% for song in song_list %}
+
+    <div class=“row”>
+
+      <div class="col-md-4 col-lg-4">
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+        <li class=“text-center”>
+
+          <h3 class=“song-name”>
+
+             {{song.song_path}}
+
+          </h3>
+
+        </li>
+
+      </div>
+
+    </div>
+
+  {% endfor %} 
+  
+{% endmacro %}
