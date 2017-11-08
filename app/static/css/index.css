@@ -7,7 +7,7 @@ body {
 }
 
 #position1 {
-  background-color: #211e2e;
+  background-color: #23232c;
   margin: 0;
   padding: 0;
   height: 1000px;
@@ -24,6 +24,48 @@ body {
 
 #heading {
   color: #fff;
+  font-weight: bold;
+  font-size: 28px;
+  margin-left: 40px;
+}
+
+#heading:hover {
+  color: #007feb;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+}
+
+#home {
+  background-color: #15151e;
+  height: 40px;
+  width: 307px;
+  margin-left: -80px;
+  border-left-style: solid;
+  border-left-color: #007feb;
+  border-left-width: 7px;
+}
+
+#home:hover {
+  color: #fff;
+  background-color: #007feb;
+}
+
+.base {
+  background-color: #007feb;
+  width: 240px;
+  height: 40px;
+  color: #fff;
+  border-radius: 4px;
+  margin-left: -50px;
+  font-weight: bold;
+  margin-top: 8px;
+  opacity: 0.80;
+}
+
+.base:hover {
+  opacity: 1.0;
 }
 
 .search {
