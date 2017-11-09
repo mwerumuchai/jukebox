@@ -137,7 +137,7 @@ def delete_song(id):
 
     song.delete_song(id)
 
-    return redirect(url_for('.index'))
+    return redirect(url_for('.group', id=current_user.id))
 
 @main.route('/group/playlist/delete/<int:id>')
 @login_required
@@ -155,7 +155,7 @@ def delete_playlist(id):
 
     playlist.delete_playlist(id)
 
-    return redirect(url_for('.index'))
+    return redirect(url_for('.group', id=current_user.id))
 
 
 
