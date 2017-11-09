@@ -6,7 +6,38 @@
 
     <title> {{title}} </title>
 
-    <h2>{{playlist.name}} by {{ playlist.group.name}}</h2>
+    <h2>{{playlist.name}} by {{ playlist.group.name}}</h2> 
+
+    <h3>
+        <audio controls="controls" autoplay="autoplay" id="playlist" align=""></audio>
+
+        <a href="javascript:void(0);" onclick="playTheList({{songs_list}})">
+            Play the list
+        </a>
+    </h3>
+
+    <hr>
 
     <h4> {{ macro.displaySong(songs)}} </h4> 
+
+    <script type="text/javascript">
+
+        function playTheList(songs_list) {
+
+            // songs_list.forEach( function(song) {
+            //     console.log(song)
+            //     $('#playlist').attr('src', '/static/audios/'+song)
+
+            // })
+
+            for( var i=0; i < songs_list.length; i++ ){
+
+                console.log(songs_list[i])
+
+                $('#playlist').attr('src', '/static/audios/'+songs_list[i]);
+            }
+        }
+
+    </script>
+
 {% endblock %}

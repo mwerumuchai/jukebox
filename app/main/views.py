@@ -39,9 +39,14 @@ def playlist(id):
 
     playlist = Playlist.query.get(id)
     songs = Song.get_songs(id)
+
+    songs_list = []
+    for song in songs:
+        songs_list.append(song.name)
+
     title = f'{playlist.name} page'
 
-    return render_template('playlist.html', title=title, playlist=playlist, songs=songs)
+    return render_template('playlist.html', title=title, playlist=playlist, songs=songs, songs_list=songs_list )
 
 @main.route('/group/<int:id>')
 @login_required
