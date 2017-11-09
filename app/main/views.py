@@ -14,7 +14,22 @@ def index():
     playlists = Playlist.get_playlists() 
     title = 'Home'
 
-    return render_template('index.html', title = title, playlists = playlists)
+    search_song = request.args.get('song_query')
+
+    if search_song:
+        return redirect(url_for('.search_song', song_name = search_song))
+    else: 
+        return render_template('index.html', title = title, playlists = playlists)
+
+@main.route('/search/<song_name>')
+def search_song(song_name):
+    '''
+    View function  for searching a song in the playlist
+    '''
+    found_songs = Song.search_songs(song_name)
+    title = f'{song_name} results'
+    return render_template('search.html', title = title, found_songs = found_songs)
+
 
 @main.route('/playlist/<int:id>')
 def playlist(id):
