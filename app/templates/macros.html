@@ -39,6 +39,10 @@
 <!-- Display Songs in a Playlist -->
 {% macro displaySong(song_list) %} 
 
+  <div class="row">
+    <audio controls="controls" autoplay="autoplay" id="song" loop="loop"></audio>
+  </div>
+
   {% for song in song_list %}
 
     <div class="row">
@@ -52,7 +56,9 @@
 
           <h3 class="song-name">
 
-             {{song.name}}
+            <a href="javascript:void(0);" onclick="playSong('{{song.name}}')">
+              {{song.name}}
+            </a>
 
           </h3>
 
@@ -63,6 +69,12 @@
     </div>
 
   {% endfor %} 
+
+  <script type="text/javascript">
+    function playSong(song_name){
+      $('#song').attr('src', '/static/audios/'+song_name)
+    }
+  </script>
   
 {% endmacro %}
 
@@ -135,6 +147,9 @@
 
 <!-- Display Songs in a Group's Playlist -->
 {% macro displaySongGroup(song_list) %} 
+  <div class="row">
+    <audio controls="controls" autoplay="autoplay" loop="loop"></audio>
+  </div> 
 
   {% for song in song_list %}
 
@@ -149,7 +164,9 @@
 
           <h3 class="song-name">
 
-             {{song.name}}
+            <a href="javascript:void(0);" onclick="playSong('{{song.name}}')">
+              {{song.name}}
+            </a>
 
           </h3>
 
@@ -162,5 +179,11 @@
     </div>
 
   {% endfor %} 
+
+  <script type="text/javascript">
+    function playSong(song_name){
+      $('audio').attr('src', '/static/audios/'+song_name)
+    }
+  </script> 
   
 {% endmacro %}
