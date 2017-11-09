@@ -159,6 +159,37 @@ class Song(db.Model):
         song = Song.query.filter_by(id=song_id).delete()
         db.session.commit()
 
+    @classmethod
+    def search_songs(cls,song_name):
+        '''
+        Function to search for a song in the database and return a list of matches
+
+        Args:
+            song_name : name of the song provided by the user
+
+        Returns:
+            songs : list of songs matching the song_name provided
+        
+        songs = []
+        songs = [ Song.query.filter(Song.name.op('~')(r'\b{}\b'.format(keyword))).all() for keyword in list(song_name)]
+
+        song_name_list = song_name.split(" ")
+        song_name = "+".join(song_name_list)
+        songs_found = []
+        for keyword in song_name.split(' '):
+            result = Song.query.filter(Song.name.op('~')(r'\b{}\b'.format(keyword))).all()
+            songs_found.append(result)
+
+        
+        ''' 
+        songs = Song.query.filter( Song.name.like(song_name+"%") ).all()
+        songs_found = []
+        for song in songs:
+            songs_found.append(song.name)
+
+
+        return songs_found
+
 
 
 
