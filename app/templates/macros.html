@@ -51,32 +51,6 @@
 <!-- Display Songs in a Playlist -->
 {% macro displayFoundSong(song_list) %} {% for song in song_list %}
 
-<div class="row">
-
-  <div class="col-md-4 col-lg-4">
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-    <li class="text-center">
-
-      <h3 class="song-name">
-
-             {{song}}
-
-          </h3>
-
-    </li>
-
-  </div>
-
-</div>
-
-{% endfor %} {% endmacro %}
-
-<!-- Display Playlists in a Group page -->
-{% macro displayPlaylistGroup(playlist_list) %} {% for playlist in playlist_list %}
-
 <div class="well col-xs-10 col-sm-6 col-md-4 col-lg-2 text-center playlist-card">
 
   <li class="text-center">
