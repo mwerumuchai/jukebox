@@ -1,10 +1,8 @@
-{% extends 'base.html'%}
-{% import 'macros.html' as macro%} 
-
-{% block content %}
+{% extends 'base.html'%} {% import 'macros.html' as macro%} {% block content %}
 
 <title> {{title}} </title>
-
+<div class="container-fluid text-center" id="red">
+</div>
 <div class="container">
   <div class="row">
 
@@ -13,12 +11,10 @@
     <h3> Found matches </h3>
     <hr>
     <ul>
-      Search Results
-      {{macro.displayFoundSong(found_songs)}}
+      Search Results {{macro.displayFoundSong(found_songs)}}
     </ul>
     {% else %}
-        <h3>No found matches</h3>
-    {% endif %}
+    <h3>No found matches</h3> {% endif %}
   </div>
 </div>
 {% endblock %}
