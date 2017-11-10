@@ -1,18 +1,23 @@
 {% extends 'base.html' %} {% import 'macros.html' as macro %}
-
+<title> {{title}} </title>
 <!-- Content block -->
 {% block content %}
+<div class="container-fluid text-center" id="red">
+  <h2> <i>{{group.name}} </i></h2>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <img src="{{url_for('static',filename='img/playlist.jpeg') }}" alt="playlist" style="width: 100%;">
+  </div>
+  <div class="col-md-6" id="create-playlist">
 
-<title> {{title}} </title>
-
-<h2> {{group.name}} </h2>
-
-<h3>
-        <a href='/group/playlist/new/{{group.id}}'> Create Playlist </a>
+    <h3><a href='/group/playlist/new/{{group.id}}'> Create Playlist </a>
     </h3>
-
-<ul>
-  {{ macro.displayPlaylistGroup(playlists)}}
-</ul>
+  </div>
+</div>
+<div class="row2">
+  <ul class="list-unstyled">
+    <h3>{{ macro.displayPlaylistGroup(playlists)}}</ul></h3>
+</div>
 
 {% endblock %}

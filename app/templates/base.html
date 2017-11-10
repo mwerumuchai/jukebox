@@ -1,41 +1,36 @@
 {% extends 'bootstrap/base.html' %}
-
-
-
 <!-- Styles block -->
-
 {% block styles%} {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% endblock %} {% block body%}
 
+<!-- Scripts block -->
+{% block scripts %}
+<script src="{{url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+{{super()}}
+{% endblock %}
 
-<div class="row">
-  <div class="col-md-2" id="position1">
+
+<div id="position1" class="col-md-2">
+  <ul>
+    <h1><a  id="heading" href="/">NICKBOX</a></h1>
     <ul>
-      <h1 id="heading"><a href="/">NICKBOX</a></h1>
-      <ul>
-        <h2><a href="/"><button type="button" class="btn btn-info">Home</button></a> </ul>{% if current_user.is_authenticated %} {{current_user.name}}</ul>
-        <a href="{{url_for('auth.logout')}}">Log out</a>{% else %}
-        <ul><a href="{{url_for('auth.login')}}"><button type="button" class="btn btn-info">Login</button></a></ul>{%endif%}
-        <ul><h2><a href="{{url_for('auth.register')}}"><button type="button" class="btn btn-info">Create Group</button></a></ul></h2>
-        <a href="/"><i class="glyphicon glyphicon-headphones"></i>Playlist</a>
+      <h2><a href="/"><button type="button" class="btn" id="home">HOME</button></a>
+        </ul>{% if current_user.is_authenticated %}
+        <a href="{{url_for('main.group', id=current_user.id)}}"><button class="btn" id="login">
+          {{current_user.name}}</button></a></ul>
+        <a href="{{url_for('auth.logout')}}"><button class="btn" id="logout">log out</button></a>
+        {% else %}
+        <ul><a href="{{url_for('auth.login')}}"><button type="button" class="btn base">LOGIN</button></a></ul>{%endif%}
+        <ul><h2><a href="{{url_for('auth.register')}}"><button type="button" class="btn base">CREATE GROUP</button></a></ul></h2> {% if current_user.is_authenticated %}
+      <h3><a  id="playlist" href="{{url_for('main.group',id=current_user.id)}}"><i class="glyphicon glyphicon-headphones"></i>{{current_user.name}}'s playlists</a></h3> {% endif %}
 
-        <span class="social">
-          <a class="icon icon-facebook facebookIcon" target="_blank" href="https://www.facebook.com/github"></a>
-          <a target="_blank" href="https://twitter.com/github" class="icon icon-twitter"></a>
-          <a target="_blank" href="https://instagram.com/github/" class="icon icon-instagram"></a>
-          <a target="_blank" href="https://plus.google.com/103476120225460848054/posts" class="icon icon-googleplus"></a>
-          <a target="_blank" href="http://www.pinterest.com/github/" class="icon icon-pinterest"></a>
-          <a target="_blank" href="http://flickr.com/github" class="icon icon-flickr"></a>
-          <a target="_blank" href="https://www.linkedin.com/company/github" class="icon icon-linkedin"></a>
-        </span>
+    </ul>
+  </ul>
+</div>
+<div class="col-md-10" id="position2">
 
-      </ul>
-  </div>
-  <div class="col-md-10" id="position2">
-
-    <!-- content block -->
-    {% block content %} {% endblock %}
-  </div>
+  <!-- content block -->
+  {% block content %} {% endblock %}
 </div>
 
 {% endblock %}

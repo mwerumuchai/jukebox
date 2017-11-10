@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
+<!-- Styles block -->
+
+{% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {%endblock%}
+<!-- Content block -->
+{% block content %}
+
+<title> {{title}} </title>
+<div class="container-fluid text-center" id="red">
+  <h2 class="text-center">{{playlist.name}} by {{ playlist.group.name}}</h2>
+
+  <h3 class="text-center">
+    <audio controls="controls" autoplay="autoplay" id="playlist" align="" style="display:none;"></audio>
+
+    <a href="javascript:void(0);" onclick="playTheList({{songs_list}})">
+    Play the list
+    </a>
+  </h3>
+</div>
+<hr>
+
+<h4> {{ macro.displaySong(songs)}} </h4>
+
+<script type="text/javascript">
+  function playTheList(songs_list) {
+
+    // songs_list.forEach( function(song) {
+    //     console.log(song)
+    //     $('#playlist').attr('src', '/static/audios/'+song)
+
+    // })
+
+    for (var i = 0; i < songs_list.length; i++) {
+
+      console.log(songs_list[i])
+
+      $('audio').attr('src', '/static/audios/' + songs_list[i]);
+    }
+  }
+</script>
+
+{% endblock %}

@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_uploads import UploadSet,configure_uploads,AUDIO
 
 
 
@@ -12,6 +13,7 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 bootstrap = Bootstrap()
 db = SQLAlchemy()
+audios = UploadSet('audios',AUDIO)
 
 def create_app(config_name):
     '''
@@ -27,6 +29,8 @@ def create_app(config_name):
     # Creating the app configurations
     app.config.from_object(config_options[config_name])
 
+    # Configure UploadSet
+    configure_uploads(app,audios)
 
     # Initialising flask extensions
     bootstrap.init_app(app)
