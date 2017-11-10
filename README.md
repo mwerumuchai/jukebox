@@ -46,7 +46,8 @@ or <br>
 [Copy]() this and paste to your desired web browser
 
 ## Known Bugs
-No known bugs
+* Search bar
+* Play entire playlist
 
 
 ## Technologies Used
@@ -56,7 +57,7 @@ No known bugs
 * Postgres Database
 * Css
 * HTML
-
+* Javascript
   
 ## License
 MIT &copy;2017 **[Esther Mweru Muchai](https://github.com/mwerumuchai), [Neville Oronni](https://github.com/nevooronni), [John Mutavi](https://github.com/jonnygovish) and [Carol Wanjohi](https://github.com/carolwanjohi)**
