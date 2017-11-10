@@ -35,29 +35,22 @@
 <!-- Display Playlists in a Group page -->
 {% macro displayPlaylistGroup(playlist_list) %} {% for playlist in playlist_list %}
 
-<div class="row">
+<div class="well col-xs-10 col-sm-6 col-md-4 col-lg-2 text-center playlist-card">
 
-  <div class="col-md-4 col-lg-4">
-  </div>
+  <li class="text-center">
 
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-    <li class="text-center">
-
-      <h3 class="playlist-name">
+    <h3 class="playlist-name">
 
              <a href='/group/playlist/{{playlist.id}}'>
-                  {{ playlist.name }}
+                  {{ playlist.name }} <br>
                   <small>
                       by {{ playlist.group.name }}
                   </small>
               </a>
 
-  </h3>
+      </h3>
 
-    </li>
-
-  </div>
+  </li>
 
 </div>
 
