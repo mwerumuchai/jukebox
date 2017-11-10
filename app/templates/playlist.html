@@ -1,43 +1,43 @@
-{% extends 'base.html' %} 
-{% import 'macros.html' as macro %}
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
+<!-- Styles block -->
 
+{% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {%endblock%}
 <!-- Content block -->
 {% block content %}
 
-    <title> {{title}} </title>
+<title> {{title}} </title>
+<div class="container-fluid text-center" id="red">
+  <h2 class="text-center">{{playlist.name}} by {{ playlist.group.name}}</h2>
 
-    <h2>{{playlist.name}} by {{ playlist.group.name}}</h2> 
+  <h3 class="text-center">
+    <audio controls="controls" autoplay="autoplay" id="playlist" align="" style="display:none;"></audio>
 
-    <h3>
-        <audio controls="controls" autoplay="autoplay" id="playlist" align=""></audio>
+    <a href="javascript:void(0);" onclick="playTheList({{songs_list}})">
+    Play the list
+    </a>
+  </h3>
+</div>
+<hr>
 
-        <a href="javascript:void(0);" onclick="playTheList({{songs_list}})">
-            Play the list
-        </a>
-    </h3>
+<h4> {{ macro.displaySong(songs)}} </h4>
 
-    <hr>
+<script type="text/javascript">
+  function playTheList(songs_list) {
 
-    <h4> {{ macro.displaySong(songs)}} </h4> 
+    // songs_list.forEach( function(song) {
+    //     console.log(song)
+    //     $('#playlist').attr('src', '/static/audios/'+song)
 
-    <script type="text/javascript">
+    // })
 
-        function playTheList(songs_list) {
+    for (var i = 0; i < songs_list.length; i++) {
 
-            // songs_list.forEach( function(song) {
-            //     console.log(song)
-            //     $('#playlist').attr('src', '/static/audios/'+song)
+      console.log(songs_list[i])
 
-            // })
-
-            for( var i=0; i < songs_list.length; i++ ){
-
-                console.log(songs_list[i])
-
-                $('#playlist').attr('src', '/static/audios/'+songs_list[i]);
-            }
-        }
-
-    </script>
+      $('audio').attr('src', '/static/audios/' + songs_list[i]);
+    }
+  }
+</script>
 
 {% endblock %}

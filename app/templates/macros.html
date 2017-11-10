@@ -8,40 +8,29 @@
 
 <!-- Display Songs in a Playlist -->
 {% macro displaySong(song_list) %}
-<div class="row">
-  <audio controls="controls" autoplay="autoplay" id="song" loop="loop"></audio>
+<div class="container-fluid" id="audio">
+  <audio controls="controls" autoplay="autoplay" id="songs" loop="loop"></audio>
 </div>
-
 {% for song in song_list %}
+<div class="container-fluid" id="songlist">
+  <table style="width:100%">
 
-<div class="row">
+    <td>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <ul>
+          <h3 class="song-name"><a href="javascript:void(0);" onclick="playSong('{{song.name}}')">{{song.name}}</a>
+      </h3>
+        </ul>
+      </div>
+    </td>
 
-  <div class="col-md-4 col-lg-4">
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-    <li class="text-center">
-
-      <h3 class="song-name">
-
-            <a href="javascript:void(0);" onclick="playSong('{{song.name}}')">
-              {{song.name}}
-            </a>
-
-          </h3>
-
-    </li>
-
-  </div>
-
+  </table>
 </div>
-
 {% endfor %}
 
 <script type="text/javascript">
   function playSong(song_name) {
-    $('#song').attr('src', '/static/audios/' + song_name)
+    $('#songs').attr('src', '/static/audios/' + song_name)
   }
 </script>
 
@@ -83,40 +72,35 @@
 
 <!-- Display Songs in a Group's Playlist -->
 {% macro displaySongGroup(song_list) %}
-<div class="row">
-  <audio controls="controls" autoplay="autoplay" loop="loop"></audio>
+<div class="container-fluid" id="audio">
+  <audio controls="controls" autoplay="autoplay" id="songs" loop="loop"></audio>
 </div>
+<hr>
+<h3 class="text-center">List of songs</h3> {% for song in song_list %}
 
-{% for song in song_list %}
+<div class="container-fluid" id="songlist">
+  <table style="width:100%">
 
-<div class="row">
+    <td>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <ul>
+          <h3 class="song-name"><a href="javascript:void(0);" onclick="playSongGroup('{{song.name}}')">{{song.name}}</a>
+      </h3>
+        </ul>
+      </div>
+      <h3>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <a href="/group/playlist/song/delete/{{song.id}}" class="delete">Delete Song</a>
+        </div>
+      </h3>
+    </td>
 
-  <div class="col-md-4 col-lg-4">
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-    <li class="text-center">
-
-      <h3 class="song-name">
-
-            <a href="javascript:void(0);" onclick="playSong('{{song.name}}')">
-              {{song.name}}
-            </a>
-
-          </h3>
-
-      <a href="/group/playlist/song/delete/{{song.id}}">Delete Song</a>
-
-    </li>
-
-  </div>
-
+  </table>
 </div>
 
 {% endfor %}
 <script type="text/javascript">
-  function playSong(song_name) {
+  function playSongGroup(song_name) {
     $('audio').attr('src', '/static/audios/' + song_name)
   }
 </script>
