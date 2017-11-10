@@ -107,7 +107,7 @@
 
 
 <!-- Display Songs in a Group's Playlist -->
-{% macro displaySongGroup(song_list) %} {% for song in song_list %}{ % macro displaySongGroup(song_list) %}
+{% macro displaySongGroup(song_list) %}
 <div class="row">
   <audio controls="controls" autoplay="autoplay" loop="loop"></audio>
 </div>
@@ -139,7 +139,7 @@
 
 </div>
 
-{% endfor %} {% endmacro %}{ % endfor %}
+{% endfor %}
 <script type="text/javascript">
   function playSong(song_name) {
     $('audio').attr('src', '/static/audios/' + song_name)
