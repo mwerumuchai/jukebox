@@ -1,36 +1,26 @@
-{% extends 'base.html' %} 
-{% import 'macros.html' as macro %}
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
 
 <!-- Content block -->
 {% block content %}
 
-    <title> {{title}} </title>
+<title> {{title}} </title>
+<div class="container-fluid text-center" id="red">
+  <h2 class="text-center">{{playlist.name}} by {{ playlist.group.name}}</h2>
+</div>
+<i>
+<h3><a href="/group/{{playlist.group.id}}" class="glyphicon glyphicon-menu-left" id="backarrow">back</a></h3>
+</i>
+<hr>
+<div class="row">
+  <div class="col-md-4 col-lg-4">
+    <h2><a href='/group/playlist/song/new/{{playlist.id}}'><button type="button" class="btn song">Add Song</button></a></h2>
+  </div>
+  <div class="col-md-4 col-lg-4">
+  </div>
+  <div class="col-md-4 col-lg-4">
+    <h2><a href='/group/playlist/delete/{{playlist.id}}'><button type="button" class="btn song">Delete Playlist</button></a></h2>
+  </div>
+</div>
+<hr>
 
-    <h2>{{playlist.name}} by {{ playlist.group.name}}</h2>
-
-    <div class="row">
-
-        <div class="col-md-4 col-lg-4">
-
-            <h2>
-                <a href='/group/playlist/song/new/{{playlist.id}}'>Add Song</a>
-            </h2>
-            
-        </div>
-
-        <div class="col-md-4 col-lg-4">
-            
-        </div>
-
-        <div class="col-md-4 col-lg-4">
-            
-            <h2>
-                <a href='/group/playlist/delete/{{playlist.id}}'>Delete Playlist</a>
-            </h2>
-            
-        </div>
-
-    </div>
-
-    <h4> {{ macro.displaySongGroup(songs)}} </h4> 
-{% endblock %}
+<h4> {{ macro.displaySongGroup(songs)}} </h4> {% endblock %}
