@@ -3,6 +3,12 @@
 {% block styles%} {{ super() }}
 <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"> {% endblock %} {% block body%}
 
+<!-- Scripts block -->
+{% block scripts %}
+<script src="{{url_for('static', filename='js/jquery-3.2.1.min.js')}}"></script>
+{{super()}}
+{% endblock %}
+
 
 <div id="position1" class="col-md-2">
   <ul>

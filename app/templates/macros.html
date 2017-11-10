@@ -7,7 +7,12 @@
 {% endfor %} {% endmacro %}
 
 <!-- Display Songs in a Playlist -->
-{% macro displaySong(song_list) %} {% for song in song_list %}
+{% macro displaySong(song_list) %}
+<div class="row">
+  <audio controls="controls" autoplay="autoplay" id="song" loop="loop"></audio>
+</div>
+
+{% for song in song_list %}
 
 <div class="row">
 
@@ -20,7 +25,44 @@
 
       <h3 class="song-name">
 
-             {{song.name}}
+            <a href="javascript:void(0);" onclick="playSong('{{song.name}}')">
+              {{song.name}}
+            </a>
+
+          </h3>
+
+    </li>
+
+  </div>
+
+</div>
+
+{% endfor %}
+
+<script type="text/javascript">
+  function playSong(song_name) {
+    $('#song').attr('src', '/static/audios/' + song_name)
+  }
+</script>
+
+{% endmacro %}
+
+
+<!-- Display Songs in a Playlist -->
+{% macro displayFoundSong(song_list) %} {% for song in song_list %}
+
+<div class="row">
+
+  <div class="col-md-4 col-lg-4">
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+    <li class="text-center">
+
+      <h3 class="song-name">
+
+             {{song}}
 
           </h3>
 
@@ -65,7 +107,12 @@
 
 
 <!-- Display Songs in a Group's Playlist -->
-{% macro displaySongGroup(song_list) %} {% for song in song_list %}
+{% macro displaySongGroup(song_list) %} {% for song in song_list %}{ % macro displaySongGroup(song_list) %}
+<div class="row">
+  <audio controls="controls" autoplay="autoplay" loop="loop"></audio>
+</div>
+
+{% for song in song_list %}
 
 <div class="row">
 
@@ -78,7 +125,9 @@
 
       <h3 class="song-name">
 
-             {{song.name}}
+            <a href="javascript:void(0);" onclick="playSong('{{song.name}}')">
+              {{song.name}}
+            </a>
 
           </h3>
 
@@ -90,4 +139,11 @@
 
 </div>
 
-{% endfor %} {% endmacro %}
+{% endfor %} {% endmacro %}{ % endfor %}
+<script type="text/javascript">
+  function playSong(song_name) {
+    $('audio').attr('src', '/static/audios/' + song_name)
+  }
+</script>
+
+{% endmacro %}

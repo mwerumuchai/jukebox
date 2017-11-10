@@ -63,5 +63,20 @@ class SongTest(unittest.TestCase):
 
         self.assertFalse( len(gotten_songs) == len(Song.query.all()) )
 
+    def test_search_songs(self):
+        '''
+        Test case to check if all songs matching the provided song name are returned by the search_songs function
+        '''
+
+        self.new_song.save_song()
+
+        test_song = Song(name="Wierd Song Awkward Song")
+
+        test_song.save_song()
+
+        gotten_songs = Song.search_songs("Wierd")
+
+        self.assertFalse( len(gotten_songs) == len(Song.query.all()) )
+
 
 
