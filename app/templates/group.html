@@ -1,21 +1,18 @@
 {% extends 'base.html' %} {% import 'macros.html' as macro %}
-<!-- <title> {{title}} </title> -->
+<title> {{title}} </title>
 <!-- Content block -->
 {% block content %}
 <div class="container-fluid text-center" id="red">
-  <h2> {{group.name}} </h2>
-</div>
-<div class="container-fluid" id="middle">
-  <p>Put random stuff here</p>
+  <h2> <i>{{group.name}} </i></h2>
 </div>
 <div class="container-fluid" id="create-playlist">
   <h3>
   <a href='/group/playlist/new/{{group.id}}'> Create Playlist </a>
 </h3>
 </div>
-<div class="well col-xs-10 col-sm-6 col-md-6 col-lg-6 text-center playlist-card">
-  <div class="row2">
-    {{ macro.displayPlaylistGroup(playlists)}}
-  </div>
+<div class="row2">
+  <ul class="list-unstyled">
+    {{ macro.displayPlaylistGroup(playlists)}}</ul>
 </div>
+
 {% endblock %}
