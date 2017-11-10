@@ -72,6 +72,14 @@
 
 {% endfor %} {% endmacro %}
 
+<!-- Display Playlist in a group page -->
+{% macro displayPlaylistGroup(playlist_list) %} {% for playlist in playlist_list %}
+<div class="well col-xs-10 col-sm-6 col-md-4 col-lg-2 text-center playlist-card">
+  <h2><a href='/group/playlist/{{playlist.id}}'></h2> {{ playlist.name }} <br>
+  <small>by {{ playlist.group.name }}</small>
+</div>
+{% endfor %} {% endmacro %}
+
 
 <!-- Display Songs in a Group's Playlist -->
 {% macro displaySongGroup(song_list) %}
