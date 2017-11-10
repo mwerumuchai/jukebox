@@ -5,7 +5,7 @@
 ## Created by [Esther Muchai](https://github.com/mwerumuchai), [Neville Oronni](https://github.com/nevooronni), [John Mutavi](https://github.com/jonnygovish) and [Carol Wanjohi](https://github.com/carolwanjohi)
 
 ## Description
-[This]() is an application that allows a user to create an account, that can be accessed by other user that know the account name and the password.A logged in user can create a playlist and upload songs to the playlist.The application then plays songs from the playlist.
+[This](https://nickbox.herokuapp.com/) is an application that allows a user to create an account, that can be accessed by other user that know the account name and the password.A logged in user can create a playlist and upload songs to the playlist.The application then plays songs from the playlist.
 
 ## User Stories
 As a user I would like to;
@@ -41,9 +41,9 @@ As a user I would like to;
 
 
 ## Deployed site
-[Click here]() to go to the deployed site <br/>
+[Click here](https://nickbox.herokuapp.com/) to go to the deployed site <br/>
 or <br>
-[Copy]() this and paste to your desired web browser
+[Copy](https://nickbox.herokuapp.com/) this and paste to your desired web browser
 
 ## Known Bugs
 * Search bar
