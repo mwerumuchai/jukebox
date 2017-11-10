@@ -15,8 +15,8 @@
         <a href="{{url_for('auth.logout')}}"><button class="btn" id="logout">log out</button></a>
         {% else %}
         <ul><a href="{{url_for('auth.login')}}"><button type="button" class="btn base">LOGIN</button></a></ul>{%endif%}
-        <ul><h2><a href="{{url_for('auth.register')}}"><button type="button" class="btn base">CREATE GROUP</button></a></ul></h2>
-      <h3><a  id="playlist" href="/"><i class="glyphicon glyphicon-headphones"></i>Playlist</a></h3>
+        <ul><h2><a href="{{url_for('auth.register')}}"><button type="button" class="btn base">CREATE GROUP</button></a></ul></h2> {% if current_user.is_authenticated %}
+      <h3><a  id="playlist" href="{{url_for('main.group',id=current_user.id)}}"><i class="glyphicon glyphicon-headphones"></i>My Playlists</a></h3> {% endif %}
 
     </ul>
   </ul>
