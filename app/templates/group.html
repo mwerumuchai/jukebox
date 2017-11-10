@@ -5,14 +5,19 @@
 <div class="container-fluid text-center" id="red">
   <h2> <i>{{group.name}} </i></h2>
 </div>
-<div class="container-fluid" id="create-playlist">
-  <h3>
-  <a href='/group/playlist/new/{{group.id}}'> Create Playlist </a>
-</h3>
+<div class="row">
+  <div class="col-md-6">
+    <img src="{{url_for('static',filename='img/playlist.jpeg') }}" alt="playlist" style="width: 100%;">
+  </div>
+  <div class="col-md-6" id="create-playlist">
+
+    <h3><a href='/group/playlist/new/{{group.id}}'> Create Playlist </a>
+    </h3>
+  </div>
 </div>
 <div class="row2">
   <ul class="list-unstyled">
-    {{ macro.displayPlaylistGroup(playlists)}}</ul>
+    <h3>{{ macro.displayPlaylistGroup(playlists)}}</ul></h3>
 </div>
 
 {% endblock %}
